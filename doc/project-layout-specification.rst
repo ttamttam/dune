@@ -205,3 +205,9 @@ So for instance, if you write ``foo`` in ``src/jbuild-ignore``, then
 be ignored.
 
 ``jbuild-ignore`` files contain a list of directory names, one per line.
+
+The addition of a directory name in the ``jbuild-ignore`` file does not prevent
+jbuilder to look inside ignored folders: it is sometimes the case that one ignores
+a folder but still depends on files inside it, so jbuilder must still setup copy
+rules for all files inside ignored folders. This is used for instance to sandbox
+an external build system, and this is used in jbuilder itself for blackbox testing.
